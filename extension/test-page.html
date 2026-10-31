@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="coursefinder-mock-platform" content="Coursera">
+  <title>Google Data Analytics Professional Certificate | Coursera</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    nav {
+      background: #0056D2;
+      color: white;
+      padding: 16px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-brand {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+    .hero {
+      background: white;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 48px 32px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #0f172a;
+    }
+    p.lead {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #475569;
+      max-width: 800px;
+      margin-bottom: 24px;
+    }
+    .meta-box {
+      display: flex;
+      gap: 32px;
+      background: #f1f5f9;
+      padding: 20px;
+      border-radius: 12px;
+    }
+    .meta-item-label {
+      font-size: 11px;
+      color: #64748b;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .meta-item-value {
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .demo-notice {
+      background: #fef3c7;
+      border: 1px solid #fde68a;
+      color: #92400e;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin: 24px auto;
+      max-width: 1000px;
+      font-size: 13px;
+    }
+    .demo-notice code {
+      background: #fde68a;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: monospace;
+    }
+    .course-switcher {
+      max-width: 1000px;
+      margin: 20px auto;
+      padding: 0 32px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .switch-btn {
+      background: white;
+      border: 1px solid #cbd5e1;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      color: #334155;
+    }
+    .switch-btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-brand">coursera (Simulated Partner Page)</div>
+    <div style="font-size: 13px;">CourseFinder Extension Live Testing Environment</div>
+  </nav>
+
+  <div class="demo-notice">
+    <strong>💡 Testing CourseFinder Browser Extension:</strong>
+    If you loaded the unpacked extension into <code>chrome://extensions</code>, you will see the floating
+    <strong>CourseFinder badge</strong> appear at the top-right corner of this page! It identifies the course,
+    checks if it's 20+/30+ hours with project, and displays your personal academic status.
+  </div>
+
+  <div class="course-switcher">
+    <span style="font-weight: 700; align-self: center; font-size: 13px;">Switch Simulated Course:</span>
+    <button class="switch-btn" onclick="switchCourse('Google Data Analytics Professional Certificate', '36 hours', 'Yes', 'Beginner', 'Coursera', 'https://www.coursera.org/professional-certificates/google-data-analytics')">
+      Google Data Analytics (36h, Project: Yes)
+    </button>
+    <button class="switch-btn" onclick="switchCourse('IBM Full Stack Software Developer Professional Certificate', '64 hours', 'Yes', 'Intermediate', 'Coursera', 'https://www.coursera.org/professional-certificates/ibm-full-stack-cloud-developer')">
+      IBM Full Stack Developer (64h, Project: Yes)
+    </button>
+    <button class="switch-btn" onclick="switchCourse('CS50’s Introduction to Computer Science', '40 hours', 'Yes', 'Beginner', 'edX', 'https://www.edx.org/learn/computer-science/harvard-university-cs50-s-introduction-to-computer-science')">
+      CS50 Harvard (40h, Project: Yes)
+    </button>
+    <button class="switch-btn" onclick="switchCourse('Introduction to Algorithms and Data Structures', '24 hours', 'No', 'Intermediate', 'edX', 'https://www.edx.org/learn/algorithms/columbia-university-data-structures-and-algorithms')">
+      Algorithms & Data Structures (24h, Project: No)
+    </button>
+  </div>
+
+  <div class="hero">
+    <div class="badge" id="c-badge">Professional Certificate • Coursera</div>
+    <h1 id="c-title" data-e2e="hero-title">Google Data Analytics Professional Certificate</h1>
+    <p class="lead" id="c-desc">
+      Prepare for a career in the high-growth field of data analytics. Master spreadsheet calculations,
+      SQL queries, Tableau data visualization, and R programming case study project.
+    </p>
+
+    <div class="meta-box">
+      <div>
+        <div class="meta-item-label">Duration</div>
+        <div class="meta-item-value" id="c-dur">Approx. 36 hours</div>
+      </div>
+      <div>
+        <div class="meta-item-label">Capstone / Project</div>
+        <div class="meta-item-value" id="c-proj">Included (Case Study)</div>
+      </div>
+      <div>
+        <div class="meta-item-label">Skill Level</div>
+        <div class="meta-item-value" id="c-level">Beginner Level</div>
+      </div>
+      <div>
+        <div class="meta-item-label">Eligible Credits</div>
+        <div class="meta-item-value">20+ &amp; 30+ Hours Eligible</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function switchCourse(title, duration, project, level, platform, link) {
+      document.title = title + ' | ' + platform;
+      document.getElementById('c-title').innerText = title;
+      document.getElementById('c-dur').innerText = 'Approx. ' + duration;
+      document.getElementById('c-proj').innerText = project === 'Yes' ? 'Included' : 'None';
+      document.getElementById('c-level').innerText = level + ' Level';
+      document.getElementById('c-badge').innerText = 'Professional Certificate • ' + platform;
+
+      // Update URL hash without reload
+      history.pushState(null, '', '#' + encodeURIComponent(title));
+
+      // Trigger re-check if content script is active
+      window.postMessage({ type: 'COURSEFINDER_SWITCH_TEST', title, link }, '*');
+    }
+  </script>
+</body>
+</html>

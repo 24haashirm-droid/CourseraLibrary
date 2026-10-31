@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CourseFinder</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      width: 360px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+    header {
+      background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+      color: white;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .container {
+      padding: 14px 16px;
+    }
+    .section-title {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #64748b;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .card {
+      background: white;
+      border-radius: 10px;
+      padding: 12px;
+      border: 1px solid #e2e8f0;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    }
+    .user-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .user-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .user-name {
+      font-weight: 600;
+      color: #0f172a;
+    }
+    .user-email {
+      font-size: 11px;
+      color: #64748b;
+    }
+    .btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.15s;
+    }
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+      width: 100%;
+    }
+    .btn-primary:hover {
+      background: #4338ca;
+    }
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-secondary:hover {
+      background: #e2e8f0;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid #cbd5e1;
+      color: #64748b;
+      font-size: 11px;
+      padding: 4px 8px;
+    }
+    .btn-outline:hover {
+      background: #f1f5f9;
+      color: #1e293b;
+    }
+    .input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+    .input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+    }
+    .pill {
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 6px;
+      border-radius: 9999px;
+      display: inline-block;
+    }
+    .pill-green { background: #dcfce7; color: #15803d; }
+    .pill-indigo { background: #e0e7ff; color: #4338ca; }
+    .pill-amber { background: #fef3c7; color: #b45309; }
+    .search-result-item {
+      padding: 8px 0;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .search-result-item:last-child {
+      border-bottom: none;
+    }
+    .search-title {
+      font-weight: 600;
+      font-size: 12px;
+      color: #0f172a;
+      text-decoration: none;
+    }
+    .search-meta {
+      display: flex;
+      gap: 6px;
+      font-size: 10px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+    .footer {
+      text-align: center;
+      padding: 10px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 11px;
+    }
+    .footer a {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .footer a:hover {
+      text-decoration: underline;
+    }
+    .msg-error {
+      background: #fee2e2;
+      color: #991b1b;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      margin-bottom: 8px;
+    }
+    .detected-status {
+      padding: 8px;
+      border-radius: 6px;
+      margin-top: 6px;
+      font-weight: 600;
+      font-size: 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span>🎯 CourseFinder</span>
+      <span class="badge">v1.0</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <button id="btn-toggle-settings" style="background:none; border:none; color:white; cursor:pointer; font-size:14px;" title="API Server Settings">⚙</button>
+      <div id="conn-indicator" style="font-size: 10px; opacity: 0.8;">Online</div>
+    </div>
+  </header>
+
+  <div class="container">
+    <!-- Server Settings Section (Collapsible) -->
+    <div id="settings-section" class="card" style="display: none; background: #f1f5f9; border-color: #cbd5e1;">
+      <div class="section-title">Backend API Server URL</div>
+      <input type="text" id="api-url-input" class="input" placeholder="https://your-domain.com or http://localhost:5000" />
+      <button class="btn btn-primary" id="btn-save-api-url" style="font-size:11px; padding:4px 8px;">Save Server URL</button>
+    </div>
+
+    <!-- User Account State -->
+    <div id="auth-section" class="card">
+      <div id="auth-loading" style="text-align: center; color: #64748b; padding: 10px;">Checking status...</div>
+      
+      <!-- Logged in view -->
+      <div id="logged-in-view" style="display: none;">
+        <div class="user-row">
+          <div class="user-info">
+            <span class="user-name" id="user-display-name"></span>
+            <span class="user-email" id="user-display-email"></span>
+          </div>
+          <button class="btn btn-outline" id="btn-logout">Sign Out</button>
+        </div>
+      </div>
+
+      <!-- Logged out view -->
+      <div id="logged-out-view" style="display: none;">
+        <div class="section-title">Sign In to Sync Academic Status</div>
+        <div id="login-error" class="msg-error" style="display: none;"></div>
+        <input type="email" id="login-email" class="input" placeholder="your-email@university.edu" />
+        <input type="password" id="login-password" class="input" placeholder="Password" />
+        <div style="display: flex; gap: 6px;">
+          <button class="btn btn-primary" id="btn-login">Sign In</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Tab Course Status -->
+    <div class="card">
+      <div class="section-title">Current Tab Course Status</div>
+      <div id="current-tab-info">
+        <p style="font-size: 11px; color: #64748b;" id="active-tab-desc">
+          Detecting course on current browser page...
+        </p>
+      </div>
+    </div>
+
+    <!-- Quick Search Global Library -->
+    <div class="card">
+      <div class="section-title">Quick Search Library (20+ / 30+ Hrs)</div>
+      <input type="text" id="quick-search-input" class="input" placeholder="e.g. Python, Meta, React, Google..." />
+      <div id="quick-search-results" style="max-height: 140px; overflow-y: auto;"></div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="http://localhost:3000" target="_blank">Open Full CourseFinder Web App ↗</a>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

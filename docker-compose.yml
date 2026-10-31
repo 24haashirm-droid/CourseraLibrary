@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  coursefinder:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: coursefinder-app
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - PORT=5000
+      - JWT_SECRET=change_this_to_a_random_secure_secret_in_production
+      # - ADMIN_EMAIL=admin@yourinstitution.edu
+      # - ADMIN_PASSWORD=YourStrongPasswordHere123!
+      # - ADMIN_NAME=Academic Dean
+    volumes:
+      - coursefinder_data:/app/backend/data
+
+volumes:
+  coursefinder_data:
+    driver: local
