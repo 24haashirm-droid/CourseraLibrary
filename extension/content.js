@@ -155,7 +155,7 @@
           </div>
 
           <div class="cf-footer">
-            <a href="http://localhost:3000" target="_blank" class="cf-link">
+            <a href="${location.origin}" target="_blank" class="cf-link">
               Open in CourseFinder Library →
             </a>
           </div>
@@ -188,7 +188,7 @@
           <div id="cf-submit-msg" class="cf-msg-box" style="display:none;"></div>
 
           <div class="cf-footer">
-            <a href="http://localhost:3000" target="_blank" class="cf-link">
+            <a href="${location.origin}" target="_blank" class="cf-link">
               Browse Global Course Library →
             </a>
           </div>

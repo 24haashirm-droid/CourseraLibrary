@@ -16,7 +16,16 @@ const extensionRoutes = require('./routes/extension');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// CORS configuration (allows Vercel/Netlify frontend or browser extension origin)
+if (process.env.NODE_ENV === 'production') {
+  app.use((req, res, next) => {
+    // Render forwards the original protocol in x-forwarded-proto header
+    if (req.headers['x-forwarded-proto'] !== 'https') {
+      return res.redirect(`https://${req.headers.host}${req.url}`);
+    }
+    next();
+  });
+}
+
 const allowedOrigins = process.env.CORS_ORIGINS
   ? process.env.CORS_ORIGINS.split(',').map((o) => o.trim())
   : '*';

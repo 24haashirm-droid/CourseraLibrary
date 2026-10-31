@@ -26,8 +26,6 @@
     "activeTab"
   ],
   "host_permissions": [
-    "http://localhost:5000/*",
-    "http://localhost:3000/*",
     "*://*.coursera.org/*",
     "*://*.edx.org/*",
     "*://*.udemy.com/*",

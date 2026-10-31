@@ -1,4 +1,4 @@
-const DEFAULT_API_BASE = 'http://localhost:5000';
+const DEFAULT_API_BASE = ''; // Use relative URL when deployed
 
 // Retrieve stored API config or return default
 async function getApiConfig() {
